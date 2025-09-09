@@ -7,5 +7,12 @@ class Node{
 }
 
 class Tree{
+    constructor(root, buildTree = buildTree()){
+    }
+
     
+}
+
+function buildTree(array){
+
 }
