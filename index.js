@@ -53,3 +53,8 @@ arrTree
 
 //second code
 //https://www.geeksforgeeks.org/dsa/sorted-array-to-balanced-bst/
+
+
+//so does the array has to be sorted first? no, some arrays are sorted, most are not, and it doesnt affect the searching. 
+//do i have to remove the duplicates first?  
+//what does the inorder traversal means? it is mentioned many times in docs and forums
