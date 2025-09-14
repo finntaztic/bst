@@ -23,7 +23,7 @@ function buildTree(arr){
     let mid = Math.floor((n-1)/2);
     console.log(mid)//6
 
-    //creating the root node
+    //creating the root node, its the middle of a sorted array
 
     let root = new Node(arr[mid]);
     console.log(root)
