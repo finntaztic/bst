@@ -15,7 +15,6 @@ class Tree{
 function buildTree(arr){
 
     //sort array
-
     let sortedArr = arr.sort(function(a, b){
         return a-b;
     });
@@ -23,12 +22,10 @@ function buildTree(arr){
     console.log(sortedArr)
 
     //remove duplicates
-
     let uniqueArr = sortedArr.filter((item, index) => sortedArr.indexOf(item) === index);
     console.log(uniqueArr)
 
     //find the middle element
-
     let n = uniqueArr.length;
     console.log(n)//14
     if (n === 0)
@@ -38,12 +35,14 @@ function buildTree(arr){
     let mid = Math.floor((n-1)/2);
     console.log(mid)//6
 
-    // //creating the root node, its the middle of a sorted array
-
-    // let root = new Node(arr[mid]);
-    // console.log(root)
+    //creating the root node, its the middle of a sorted array
+    let root = new Node(arr[mid]);
+    console.log(root)
     
-    // //get the middle of the left half
+    //get the left half
+    let leftArr = uniqueArr[0, mid -1]
+    console.log(`this is left arr ${leftArr}`)
+    // root.left = 
 
     // //get the middle half first
 
