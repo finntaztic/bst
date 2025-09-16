@@ -10,6 +10,7 @@ class Tree{
     constructor(arr){
         this.root = this.buildTree(arr);
     } 
+
 }
 
 function buildTree(arr){
@@ -36,34 +37,32 @@ function buildTree(arr){
     console.log(mid)//6
 
     //creating the root node, its the middle of a sorted array
-    let root = new Node(arr[mid]);
+    let root = new Node(uniqueArr[mid]);
     console.log(root)
     
-    //get the left half
-    let leftArr = uniqueArr[0, mid -1]
-    console.log(`this is left arr ${leftArr}`)
-    // root.left = 
+    // //get the left half
+    root.left = buildTree(uniqueArr.slice(0, mid));
+    root.right = buildTree(uniqueArr.slice(mid + 1));
 
-    // //get the middle half first
-
-    // let leftHalf = 
-
-    // root.left = [0, n-1];
-    // console.log(root)
+    return root
 
     
-    
-
-    // console.log(root)
-
-
-
-    // let q = [{node : root, range: [0, n-1]}];
-    // let frontIndex = 0;
 }
 
-const arrTree = buildTree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
-arrTree
+const num = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+const bst = new buildTree(num);
+
+
+function printTree(root, level = 0) {
+    if (root !== null) {
+        printTree(root.right, level + 1);
+        console.log(" ".repeat(4 * level) + "-> " + root.value);
+        printTree(root.left, level + 1);
+    }
+}
+
+printTree(bst);
+
 
 //second code
 //https://www.geeksforgeeks.org/dsa/sorted-array-to-balanced-bst/
