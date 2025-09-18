@@ -5,26 +5,22 @@ class Node{
         this.left = left;
     }
 }
-
 class Tree{
     constructor(arr){
         this.root = this.buildTree(arr);
     } 
 
-
     buildTree(arr) {
-
-            //sort array
+    //sort array
     let sortedArr = arr.sort(function(a, b){
         return a-b;
     });
 
-
     //remove duplicates
     let uniqueArr = sortedArr.filter((item, index) => sortedArr.indexOf(item) === index);
-
         if (uniqueArr.length === 0) return null;
 
+        //find the mid root
         let mid = Math.floor(uniqueArr.length / 2);
         let root = new Node(uniqueArr[mid]);
 
@@ -33,29 +29,64 @@ class Tree{
 
         return root;
     }
+
+    prettyPrint(node, prefix = '', isLeft = true){
+      if (node === null) return;
+
+      if (node.right !== null) {
+        this.prettyPrint(node.right, `${prefix}${isLeft ? '│   ' : '    '}`, false);
+      }
+
+      console.log(`${prefix}${isLeft ? '└── ' : '┌── '}${node.data}`);
+
+      if (node.left !== null) {
+        this.prettyPrint(node.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
+      }
+    }
+
+    insert(root, key){
+
+    }
 }
 
-const prettyPrint = (node, prefix = '', isLeft = true) => {
-  if (node === null) return;
-
-  if (node.right !== null) {
-    prettyPrint(node.right, `${prefix}${isLeft ? '│   ' : '    '}`, false);
-  }
-
-  console.log(`${prefix}${isLeft ? '└── ' : '┌── '}${node.data}`);
-
-  if (node.left !== null) {
-    prettyPrint(node.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
-  }
-}
-
-const num = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+const num = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]
 const bst = new Tree(num);
-prettyPrint(bst.root);
+console.log(bst)
+console.log(bst.root)
+bst.prettyPrint(bst.root);
 
 
 
 
+
+// function insert (root, data){
+//   if (root === null){
+//     return new Node(data)
+//   }
+
+//   //no dupes
+//   if (root.data === data)
+//     return root;
+
+//   if(data < root.data)
+//     root.left = insert(root.left, key)
+//   else if (key>root.key)
+//     root.right = insert (root.right, key)
+
+//   return root
+// }
+
+
+// function inorder(root) {
+//     if (root !== null) {
+//         inorder(root.left);
+//         console.log(root.key + " ");
+//         inorder(root.right);
+//     }
+// }
+
+// root = insert(root, 30)
+// inorder(root)
 
 //second code
 //https://www.geeksforgeeks.org/dsa/sorted-array-to-balanced-bst/
