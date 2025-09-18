@@ -45,15 +45,34 @@ class Tree{
     }
 
     insert(root, key){
+      if (root === null)
+        return new Node(key);
+          
+      // Duplicates not allowed    
+      if (root.data === key)
+          return root;
+          
+      if (key < root.data){
+        console.log(root.left)
+        root.left = insert(root.left, key);
+      }
+      else if (key > root.data){
+        // console.log(`this is ${root.right}`)
+        root.right = insert(root.right, key);
+      }
 
+
+      return root;
     }
 }
 
-const num = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]
+const num = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
 const bst = new Tree(num);
-console.log(bst)
-console.log(bst.root)
-bst.prettyPrint(bst.root);
+// console.log(bst)
+// console.log(bst.root)
+// bst.prettyPrint(bst.root);
+console.log(bst.insert(bst.root, 20));
+
 
 
 
