@@ -45,33 +45,44 @@ class Tree{
     }
 
     insert(root, key){
+
+      // let root = bst.root
       if (root === null)
         return new Node(key);
-          
-      // Duplicates not allowed    
-      if (root.data === key)
-          return root;
-          
+      // console.log(root.data)
+      if (root.data === key){
+        return;
+      }
+
       if (key < root.data){
-        console.log(root.left)
-        root.left = insert(root.left, key);
-      }
-      else if (key > root.data){
-        // console.log(`this is ${root.right}`)
-        root.right = insert(root.right, key);
+        root.left = this.insert(root.left, key)
       }
 
-
+      if (key > root.data){
+        root.right = this.insert(root.right, key)
+      }
       return root;
+    }
+
+    delete (){
+
     }
 }
 
 const num = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
 const bst = new Tree(num);
+
+console.log(buildTree(num))
 // console.log(bst)
 // console.log(bst.root)
 // bst.prettyPrint(bst.root);
-console.log(bst.insert(bst.root, 20));
+
+// console.log(bst.root)
+// bst.insert(bst.root, 20);
+// // bst.prettyPrint(bst.root);
+// bst.insert(bst.root, 0);
+// bst.prettyPrint(bst.root);
+
 
 
 
