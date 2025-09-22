@@ -44,27 +44,41 @@ class Tree{
       }
     }
 
-    insert(root, key){
-      console.log(root)
-      if (root === null)
-        return new Node(key);
-      // console.log(root.data)
-      if (root.data === key){
-        return;
+    insert(value){
+      let newNode = new Node(value);
+      console.log(this.root);
+      if (this.root ===null){
+        this.root = newNode;
+        return this;
       }
 
-      if (key < root.data){
-        root.left = this.insert(root.left, key)
-      }
+      let current = this.root;
 
-      if (key > root.data){
-        root.right = this.insert(root.right, key)
+      while (current){
+        
       }
-      return root;
     }
 
-    delete (){
-    }
+    // insert(root, key){
+
+    //   console.log(root)
+    //   if (root === null)
+    //     return new Node(key);
+    //   // console.log(root.data)
+    //   if (root.data === key){
+    //     return;
+    //   }
+
+    //   if (key < root.data){
+    //     root.left = this.insert(root.left, key)
+    //   }
+
+    //   if (key > root.data){
+    //     root.right = this.insert(root.right, key)
+    //   }
+    //   return root;
+    // }
+
 }
 
 const num = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
@@ -77,44 +91,9 @@ const bst = new Tree(num);
 
 // console.log(bst.root)
 bst.insert(bst.root, 20);
-bst.prettyPrint(bst.root);
-// bst.insert(bst.root, 0);
 // bst.prettyPrint(bst.root);
+// bst.delete(bst.root, 9);
 
-
-
-
-
-
-
-// function insert (root, data){
-//   if (root === null){
-//     return new Node(data)
-//   }
-
-//   //no dupes
-//   if (root.data === data)
-//     return root;
-
-//   if(data < root.data)
-//     root.left = insert(root.left, key)
-//   else if (key>root.key)
-//     root.right = insert (root.right, key)
-
-//   return root
-// }
-
-
-// function inorder(root) {
-//     if (root !== null) {
-//         inorder(root.left);
-//         console.log(root.key + " ");
-//         inorder(root.right);
-//     }
-// }
-
-// root = insert(root, 30)
-// inorder(root)
 
 //second code
 //https://www.geeksforgeeks.org/dsa/sorted-array-to-balanced-bst/
