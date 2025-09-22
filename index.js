@@ -10,7 +10,7 @@ class Tree{
         this.root = this.buildTree(arr);
     } 
 
-    buildTree(arr) {
+    buildTree(arr){
     //sort array
     let sortedArr = arr.sort(function(a, b){
         return a-b;
@@ -45,8 +45,7 @@ class Tree{
     }
 
     insert(root, key){
-
-      // let root = bst.root
+      console.log(root)
       if (root === null)
         return new Node(key);
       // console.log(root.data)
@@ -65,21 +64,20 @@ class Tree{
     }
 
     delete (){
-
     }
 }
 
 const num = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
 const bst = new Tree(num);
 
-console.log(buildTree(num))
+// console.log(buildTree(num))
 // console.log(bst)
 // console.log(bst.root)
 // bst.prettyPrint(bst.root);
 
 // console.log(bst.root)
-// bst.insert(bst.root, 20);
-// // bst.prettyPrint(bst.root);
+bst.insert(bst.root, 20);
+bst.prettyPrint(bst.root);
 // bst.insert(bst.root, 0);
 // bst.prettyPrint(bst.root);
 
