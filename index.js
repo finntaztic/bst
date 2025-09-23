@@ -53,10 +53,42 @@ class Tree{
       }
 
       let current = this.root;
+      console.log(current)
 
       while (current){
-        
+        if(value === current.value) return undefined;
+        if(value < current.data){
+          if(current.left === null){
+            current.left = newNode;
+            return this;
+          }
+          current = current.left;
+        } else {
+          if(current.right === null){
+            current.right = newNode;
+            return this;
+          }
+          current = current.right;
+        }
       }
+    }
+
+    delete(value){
+       let current = this.root;
+
+       if (value == current.data){
+        //remove value
+       } else if (value < current.data){
+        current.left = 
+       }
+       while (current){
+        if(value < current.data){
+          if(current.left === null){
+            current.left = newNode;
+            return this;
+          }
+        }
+       } console.log('hello')
     }
 
     // insert(root, key){
@@ -90,11 +122,15 @@ const bst = new Tree(num);
 // bst.prettyPrint(bst.root);
 
 // console.log(bst.root)
-bst.insert(bst.root, 20);
-// bst.prettyPrint(bst.root);
+// bst.insert(20);
+// bst.insert(10);
+bst.delete(67);
+bst.prettyPrint(bst.root);
 // bst.delete(bst.root, 9);
 
 
+
+//https://dev.to/jenshaw/deleting-nodes-in-binary-search-trees-4nhm
 //second code
 //https://www.geeksforgeeks.org/dsa/sorted-array-to-balanced-bst/
 
