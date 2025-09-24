@@ -74,21 +74,15 @@ class Tree{
     }
 
     delete(value){
-       let current = this.root;
+      let current = this.root;
 
-       if (value == current.data){
-        //remove value
-       } else if (value < current.data){
-        current.left = 
-       }
-       while (current){
-        if(value < current.data){
-          if(current.left === null){
-            current.left = newNode;
-            return this;
+      while (current){
+        if (value == current.data){
+          if (!current.left && !current.right){
+            return null;
           }
-        }
-       } console.log('hello')
+        } 
+      }
     }
 
     // insert(root, key){
@@ -124,8 +118,9 @@ const bst = new Tree(num);
 // console.log(bst.root)
 // bst.insert(20);
 // bst.insert(10);
-bst.delete(67);
+bst.delete(5);
 bst.prettyPrint(bst.root);
+
 // bst.delete(bst.root, 9);
 
 
