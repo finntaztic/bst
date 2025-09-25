@@ -27,7 +27,7 @@ class Tree{
     console.log(root)
 
 
-    root.left = [arr.splice (0, mid-1)]; //0, 1
+    root.left = arr.slice (0, mid); //0, 1
     console.log(root.left)
 
 
