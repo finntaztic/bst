@@ -26,7 +26,7 @@ class Tree{
     // if (mid < 0){return null}
     if (arr.length === 0) return null;
 
-    console.log(mid)
+    // console.log(mid)
     let root = new Node(arr[mid]);
     // console.log(root)
 
@@ -39,13 +39,6 @@ class Tree{
   }
 
   insert(root, value){
-    // console.log('helllo')
-    // let root = this.root;
-    // // console.log(root);
-    // console.log(root.data);
-    // console.log(root.left)
-
-
     if (root === null){
       return new Node(value)
     } 
@@ -54,13 +47,57 @@ class Tree{
       return root;
 
     if (value < root.data)
-      root.left = insert(root.left, value);
+      root.left = this.insert(root.left, value);
     else if (value > root.data)
-      root.right = insert(root.right, value);
+      root.right = this.insert(root.right, value);
 
     return root
-  // }
-}
+  }
+
+  delete (root, value){
+      console.log(root)
+
+
+    // console.log(root)
+    // console.log(`this is root  ${root}`)
+    if (root.data === value){
+      root = null;
+    }
+
+    if (root.data === null){
+      return root;
+    }
+
+    if (value > root.data)
+      root.right = this.delete(root.right, value);
+      
+    // if (root.data == value) 
+    //   root = nul
+
+    // if (value > root.data)
+    //   root.right = this.delete(root.right, value);
+      // console.log(`this is root data ${root}`)
+      // console.log(`this is root data ${root.data}`)
+      // console.log(`this is root right ${root.right}`)
+      // console.log(`this is root right ${root.left}`)
+
+      // root.right = this.delete(root, value);
+    // if (value === root.data){
+    //   if (root.right === null && root.left === null){
+    //     root.data = null;
+    //   }
+    // }
+
+
+
+  //   if (value > root.data){
+  //     root.right = 'hello' //this.delete(root.right, value)
+  //   }
+
+  //   if (value < root.data){
+  //     root.left = 'hello' //this.delete(root.left, value)
+  //   }
+  }
 }
 
 const prettyPrint = (node, prefix = '', isLeft = true) => {
@@ -78,13 +115,14 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
 
 
 
-let array = [1, 45, 20, 10, 20, 4, 4];
+let array = [1, 20, 75];
 let bst = new Tree(array);
 
-prettyPrint(bst.root)
-console.log(bst.root)
-bst.insert(bst.root, 7)
 // prettyPrint(bst.root)
+// console.log(bst.root)
+// bst.insert(bst.root, 7)
+bst.delete(bst.root, 75)
+prettyPrint(bst.root)
 // bst.buildTree(array);
 
 
