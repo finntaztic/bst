@@ -55,48 +55,21 @@ class Tree{
   }
 
   delete (root, value){
-      console.log(root)
 
-
-    // console.log(root)
-    // console.log(`this is root  ${root}`)
-    if (root.data === value){
-      root = null;
-    }
-
-    if (root.data === null){
+    if (root === null){
       return root;
     }
-
-    if (value > root.data)
+    if (value > root.data){
       root.right = this.delete(root.right, value);
-      
-    // if (root.data == value) 
-    //   root = nul
+    } else if (value < root.data){
+      root.left = this.delete(root.left, value)
+    } else if (root.left === null){
+      return root.right;
+    } else if (root.right === null){
+      return root.left;
+    }
 
-    // if (value > root.data)
-    //   root.right = this.delete(root.right, value);
-      // console.log(`this is root data ${root}`)
-      // console.log(`this is root data ${root.data}`)
-      // console.log(`this is root right ${root.right}`)
-      // console.log(`this is root right ${root.left}`)
-
-      // root.right = this.delete(root, value);
-    // if (value === root.data){
-    //   if (root.right === null && root.left === null){
-    //     root.data = null;
-    //   }
-    // }
-
-
-
-  //   if (value > root.data){
-  //     root.right = 'hello' //this.delete(root.right, value)
-  //   }
-
-  //   if (value < root.data){
-  //     root.left = 'hello' //this.delete(root.left, value)
-  //   }
+    
   }
 }
 
