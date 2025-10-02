@@ -54,8 +54,15 @@ class Tree{
     return root
   }
 
-  delete (root, value){
+  getSucc (root){
+    let curr = root.right;
+    if (curr.left !== null && curr.right !== null){
+      curr = curr.left;
+    }
+    return curr
+  }
 
+  delete (root, value){
     if (root === null){
       return root;
     }
@@ -63,13 +70,49 @@ class Tree{
       root.right = this.delete(root.right, value);
     } else if (value < root.data){
       root.left = this.delete(root.left, value)
-    } else if (root.left === null){
+    } else {
+    
+    if (root.left === null){
       return root.right;
     } else if (root.right === null){
       return root.left;
     }
 
-    
+    let succ = this.getSucc(root);
+    root.data = succ.data; //change the number of the root
+    root.right = this.delete(root.right, succ.key)
+    }
+  }
+
+  find (root, value){
+    if (root === null || value === root.data){
+      return root;
+    } else if (value > root.data){
+      return this.find(root.right, value)
+    } else if (value < root.data){
+      return this.find(root.left, value)
+    } 
+  }
+
+  levelOrderForEach(callback){
+
+    console.log(this)
+    console.log(`this is the root: ${this}`)
+  //   console.log(callback)
+  //   const q = [callback];
+  //   console.log(q)
+  //   while (q.length > 0){
+  //     const curr = q.shift();
+  //     console.log(curr.data);
+
+  //     if (curr.left !== null){
+  //       q.push (curr.left)
+  //     }
+      
+  //     if (curr.right !== null){
+  //       q.push (curr.right)
+  //     }
+  //   }
   }
 }
 
@@ -88,14 +131,20 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
 
 
 
-let array = [1, 20, 75];
+let array = [1, 20, 2, 3, 75];
 let bst = new Tree(array);
+bst.levelOrderForEach(bst.root);
 
-// prettyPrint(bst.root)
+prettyPrint(bst.root)
 // console.log(bst.root)
 // bst.insert(bst.root, 7)
-bst.delete(bst.root, 75)
-prettyPrint(bst.root)
+// bst.delete(bst.root, 20)
+// prettyPrint(bst.root)
+
+
+
+
+
 // bst.buildTree(array);
 
 
