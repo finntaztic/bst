@@ -94,17 +94,18 @@ class Tree{
     } 
   }
 
-  callback (){
+  
+  // callback (){
 
-  }
-  levelOrderForEach(callback){
-    console.log(this)
-    console.log(`this is the root: ${this}`)
+  // }
+  // levelOrderForEach(callback){
+  //   console.log(this)
+  //   console.log(`this is the root: ${this}`)
     
-    const q = [this];
-    while (q.length > 0){
-      console.log(q)
-    }
+  //   const q = [this];
+  //   while (q.length > 0){
+  //     console.log(q)
+  //   }
   
   //   console.log(callback)
   //   const q = [callback];
@@ -121,7 +122,7 @@ class Tree{
   //       q.push (curr.right)
   //     }
   //   }
-  }
+  // }
 }
 
 const prettyPrint = (node, prefix = '', isLeft = true) => {
@@ -141,9 +142,11 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
 
 let array = [1, 20, 2, 3, 75];
 let bst = new Tree(array);
-bst.levelOrderForEach(bst.root);
+// bst.levelOrderForEach(bst.root);
+console.log(bst.find(bst.root, 1))
 
-prettyPrint(bst.root)
+
+// prettyPrint(bst.root)
 // console.log(bst.root)
 // bst.insert(bst.root, 7)
 // bst.delete(bst.root, 20)
