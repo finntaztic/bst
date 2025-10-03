@@ -94,10 +94,18 @@ class Tree{
     } 
   }
 
-  levelOrderForEach(callback){
+  callback (){
 
+  }
+  levelOrderForEach(callback){
     console.log(this)
     console.log(`this is the root: ${this}`)
+    
+    const q = [this];
+    while (q.length > 0){
+      console.log(q)
+    }
+  
   //   console.log(callback)
   //   const q = [callback];
   //   console.log(q)
