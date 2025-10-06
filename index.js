@@ -94,35 +94,42 @@ class Tree{
     } 
   }
 
-  
-  // callback (){
 
-  // }
-  // levelOrderForEach(callback){
-  //   console.log(this)
-  //   console.log(`this is the root: ${this}`)
-    
-  //   const q = [this];
-  //   while (q.length > 0){
-  //     console.log(q)
-  //   }
-  
-  //   console.log(callback)
-  //   const q = [callback];
-  //   console.log(q)
-  //   while (q.length > 0){
-  //     const curr = q.shift();
-  //     console.log(curr.data);
+  levelOrderForEach(callback){
+    if (typeof callback !== 'function') {
+      throw new Error('A valid callback function must be provided.');
+    }
 
-  //     if (curr.left !== null){
-  //       q.push (curr.left)
-  //     }
+    const q = [this.root];
+    while (q.length > 0){
+      const curr = q.shift();
+      callback(curr);
+
+      if (curr.left !== null){
+        q.push (curr.left)
+      }
       
-  //     if (curr.right !== null){
-  //       q.push (curr.right)
-  //     }
-  //   }
-  // }
+      if (curr.right !== null){
+        q.push (curr.right)
+      }
+    }
+  }
+
+  inOrderForEach(callback){
+    let root = this.root
+    if (root === null){
+      return;
+    } 
+    
+    this.inOrderForEach(root.left);
+    // console.log(root.left)
+    callback(root.left)
+
+    this.inOrderForEach(root.right);
+    // console.log(root.right);
+    callback(root.right);
+
+  }
 }
 
 const prettyPrint = (node, prefix = '', isLeft = true) => {
@@ -142,19 +149,18 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
 
 let array = [1, 20, 2, 3, 75];
 let bst = new Tree(array);
-// bst.levelOrderForEach(bst.root);
-console.log(bst.find(bst.root, 1))
+// bst.levelOrderForEach(curr => console.log(curr.data));
+// bst.inOrderForEach(curr => console.log(curr));
+bst.inOrderForEach(root => console.log(root));
 
 
+
+// console.log(bst.find(bst.root, 1))
 // prettyPrint(bst.root)
 // console.log(bst.root)
 // bst.insert(bst.root, 7)
 // bst.delete(bst.root, 20)
 // prettyPrint(bst.root)
-
-
-
-
 
 // bst.buildTree(array);
 
@@ -168,5 +174,6 @@ console.log(bst.find(bst.root, 1))
 //2. What is a function called inside a class -- a method
 
 //3. is it a bad practice to have another function inside a method?
+//4. what is the term traverse and how is it used? 
 
 //close to what im looking for but not really: https://medium.com/@python-javascript-php-html-css/building-a-binary-search-tree-from-a-javascript-array-374678de88ab
