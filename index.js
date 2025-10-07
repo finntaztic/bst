@@ -115,20 +115,84 @@ class Tree{
     }
   }
 
-  inOrderForEach(callback){
-    let root = this.root
-    if (root === null){
-      return;
-    } 
-    console.log(root);
-    this.inOrderForEach(root.left);
-    console.log(root.left)
-    callback(root.left)
+inOrderForEach(callback) {
+      if (typeof callback !== 'function') {
+      throw new Error('A valid callback function must be provided.');
+    }
 
-    this.inOrderForEach(root.right);
-    console.log(root.right);
-    callback(root.right);
+  function traverse(root) {
+    if (root === null) return;
+
+    // Left subtree
+    traverse(root.left);
+
+    // Current node
+    callback(root);
+
+    // Right subtree
+    traverse(root.right);
   }
+
+  traverse(this.root);
+}
+
+  preOrderForEach(callback){
+
+    if (typeof callback !== 'function') {
+      throw new Error('A valid callback function must be provided.');
+    }
+
+    function traverse(root){
+      if (root === null) return;
+
+      callback(root);
+      traverse(root.left);
+      traverse(root.right);
+    }
+    traverse(this.root);
+  }
+
+
+  preOrderForEach(callback){
+  
+    if (typeof callback !== 'function') {
+      throw new Error('A valid callback function must be provided.');
+    }
+
+    function traverse(root){
+      if (root === null) return;
+
+      callback(root);
+      traverse(root.left);
+      traverse(root.right);
+    }
+    traverse(this.root);
+  }
+
+  postOrderForEach(callback){
+
+    if (typeof callback !== 'function') {
+      throw new Error('A valid callback function must be provided.');
+    }
+
+    function traverse(root){
+      if (root === null) return;
+
+      traverse(root.left);
+      traverse(root.right);
+      callback(root)
+    }
+    traverse(this.root)
+  }
+
+  height (value){
+    function findHeight(){
+      if (value === root.data){
+        
+      }
+    }
+  }
+
 }
 
 const prettyPrint = (node, prefix = '', isLeft = true) => {
@@ -150,7 +214,11 @@ let array = [1, 20, 2, 3, 75];
 let bst = new Tree(array);
 // bst.levelOrderForEach(curr => console.log(curr.data));
 // bst.inOrderForEach(curr => console.log(curr));
-bst.inOrderForEach(root => console.log(root));
+// bst.inOrderForEach(root => console.log(root.data));
+// bst.preOrderForEach(root => console.log(root.data));
+bst.postOrderForEach(root => console.log(root.data));
+
+
 
 
 
