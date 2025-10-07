@@ -120,15 +120,14 @@ class Tree{
     if (root === null){
       return;
     } 
-    
+    console.log(root);
     this.inOrderForEach(root.left);
-    // console.log(root.left)
+    console.log(root.left)
     callback(root.left)
 
     this.inOrderForEach(root.right);
-    // console.log(root.right);
+    console.log(root.right);
     callback(root.right);
-
   }
 }
 
