@@ -185,20 +185,18 @@ inOrderForEach(callback) {
     traverse(this.root)
   }
 
-  height (value){
+height(value) {
+  function findHeight(root) {
+    if (root === null) return -1;
 
-    function findHeight(root){
-      if (root === null)return -1
-      
-      let lHeight = findHeight(root.left);
-      let rHeight = findHeight(root.right);
+    let lHeight = findHeight(root.left);
+    let rHeight = findHeight(root.right);
 
-      return Math.max(lHeight, rHeight) + 1
-    }
-
-    console.log(findHeight(this.root))
+    return Math.max(lHeight, rHeight) + 1;
   }
 }
+}
+
 
 const prettyPrint = (node, prefix = '', isLeft = true) => {
   if (node === null) {
@@ -222,7 +220,7 @@ let bst = new Tree(array);
 // bst.inOrderForEach(root => console.log(root.data));
 // bst.preOrderForEach(root => console.log(root.data));
 // bst.postOrderForEach(root => console.log(root.data));
-bst.height()
+bst.height(3)
 
 
 
