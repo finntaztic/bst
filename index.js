@@ -122,14 +122,8 @@ inOrderForEach(callback) {
 
   function traverse(root) {
     if (root === null) return;
-
-    // Left subtree
     traverse(root.left);
-
-    // Current node
     callback(root);
-
-    // Right subtree
     traverse(root.right);
   }
 
@@ -185,16 +179,45 @@ inOrderForEach(callback) {
     traverse(this.root)
   }
 
-height(value) {
-  function findHeight(root) {
-    if (root === null) return -1;
-
-    let lHeight = findHeight(root.left);
-    let rHeight = findHeight(root.right);
-
-    return Math.max(lHeight, rHeight) + 1;
+  find (root, value){
+    if (root === null || value === root.data){
+      return root;
+    } else if (value > root.data){
+      return this.find(root.right, value)
+    } else if (value < root.data){
+      return this.find(root.left, value)
+    } 
   }
-}
+  height(value) {  
+    return findValue(this.root);
+
+    function findValue(root){
+      if (root === null){
+        return -1
+      }
+  }
+
+    // function findHeight(root){
+    //   if (root === null) {
+    //     return -1; 
+    //   }
+    // }
+    // function findHeight(root) {
+    //   if (root === null) return -1;
+
+    //   let lHeight = findHeight(root.left);
+    //   let rHeight = findHeight(root.right);
+
+    //   return Math.max(lHeight, rHeight) + 1;
+    // }
+  }
+
+  depth (value){
+  }
+
+  isBalanced(){
+
+  }
 }
 
 
@@ -213,14 +236,15 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
 
 
 
-let array = [1, 20, 2, 3, 75];
+let array = [];
 let bst = new Tree(array);
 // bst.levelOrderForEach(curr => console.log(curr.data));
 // bst.inOrderForEach(curr => console.log(curr));
 // bst.inOrderForEach(root => console.log(root.data));
 // bst.preOrderForEach(root => console.log(root.data));
 // bst.postOrderForEach(root => console.log(root.data));
-bst.height(3)
+// bst.height(3)
+console.log(bst.height(3))
 
 
 
