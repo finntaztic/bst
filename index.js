@@ -84,14 +84,17 @@ class Tree{
     }
   }
 
-  find (root, value){
-    if (root === null || value === root.data){
-      return root;
-    } else if (value > root.data){
-      return this.find(root.right, value)
-    } else if (value < root.data){
-      return this.find(root.left, value)
-    } 
+  find (value){
+    return helper(this.root);
+    function helper(node){
+      if (node === null || value === node.data){
+        return node;
+      } else if (value > node.data){
+        return helper(node.right)
+      } else if (value < node.data){
+        return helper(node.left)
+      } 
+    }
   }
 
 
@@ -179,29 +182,69 @@ inOrderForEach(callback) {
     traverse(this.root)
   }
 
-  find (root, value){
-    if (root === null || value === root.data){
-      return root;
-    } else if (value > root.data){
-      return this.find(root.right, value)
-    } else if (value < root.data){
-      return this.find(root.left, value)
-    } 
-  }
-  height(value) {  
-    return findValue(this.root);
 
-    function findValue(root){
+  find (value){
+    return helper(this.root);
+    function helper(node){
+      if (node === null || value === node.data){
+        return node;
+      } else if (value > node.data){
+        return helper(node.right)
+      } else if (value < node.data){
+        return helper(node.left)
+      } 
+    }
+  }
+
+  height (value){
+    let height = 0;
+    return helper(this.root)
+    function helper(root){
       if (root === null){
-        return -1
-      }
-  }
+        return -1;
+      } else if (value < root.data){
+        helper(root.left);
+        return height ++;
 
-    // function findHeight(root){
-    //   if (root === null) {
-    //     return -1; 
-    //   }
+        // return height;
+        // return height;
+      }
+    }
+  }
+  // height(value) {  
+
+  //   function findValue(root){
+  //     if (root === null){
+  //       return -1;
+  //     } else if (value < this.root.data){
+  //       return height
+  //     }
+  //   }
+    // if (root === null){
+    //   return -1
+    // } else if (value < this.root.data){
+    //   return this.height()
     // }
+  // return findValue(this.root);
+
+
+  // function findValue(root){
+  //   if (root === null){
+  //     return -1
+  //   } else if (value === root.data){
+  //     return findHeight(root)  //supposed to return the height of the root
+  //   }
+  // }
+
+  // function findHeight (root){
+  //   let height = 0;
+
+  //   while (root.data !== value){
+  //     console.log(root)
+  //     height ++;
+  //   }
+  //   return height;
+  // }
     // function findHeight(root) {
     //   if (root === null) return -1;
 
@@ -210,7 +253,7 @@ inOrderForEach(callback) {
 
     //   return Math.max(lHeight, rHeight) + 1;
     // }
-  }
+  // }
 
   depth (value){
   }
@@ -236,7 +279,7 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
 
 
 
-let array = [];
+let array = [1, 3, 2, 5, 6, 7];
 let bst = new Tree(array);
 // bst.levelOrderForEach(curr => console.log(curr.data));
 // bst.inOrderForEach(curr => console.log(curr));
@@ -244,13 +287,14 @@ let bst = new Tree(array);
 // bst.preOrderForEach(root => console.log(root.data));
 // bst.postOrderForEach(root => console.log(root.data));
 // bst.height(3)
-console.log(bst.height(3))
+// console.log(bst.height(2))
 
 
 
+console.log(bst.height(1))
 
-// console.log(bst.find(bst.root, 1))
-// prettyPrint(bst.root)
+// console.log(bst.find(1));
+prettyPrint(bst.root)
 // console.log(bst.root)
 // bst.insert(bst.root, 7)
 // bst.delete(bst.root, 20)
